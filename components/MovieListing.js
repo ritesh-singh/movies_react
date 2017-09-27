@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {ListView, ScrollView, Text, View} from "react-native";
 import MovieCard from "./MovieCard";
+import {MOVIE_URL} from "../utils/Constants";
 
 class MovieListing extends Component {
 
 
     constructor() {
         super();
-        this.url = "https://api.themoviedb.org/3/movie/popular?api_key=4044a8bd5cb54041a37ff2c5a62facc0";
         this.state = {movies: []}
         this.createDataSource(this.state.movies);
     }
@@ -21,11 +21,12 @@ class MovieListing extends Component {
 
 
     componentWillMount() {
-        fetch(this.url)
+        fetch(MOVIE_URL)
             .then((response) => {
                 return response.json();
             })
             .then((response) => {
+                console.log(response.results);
                 this.createDataSource(response.results);
                 this.setState({movies: response.results});
             })

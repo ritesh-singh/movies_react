@@ -1,23 +1,21 @@
 import React from 'react';
 import {Image, Text, View} from "react-native";
+import MovieNameView from "./MovieNameView";
+import {IMAGE_BASE_URL} from "../utils/Constants";
 
 const MovieCard = ({movie}) => {
-    const {backdrop_path} = movie;
+    const {backdrop_path, original_title} = movie;
 
-    const {imageStyle, containerStyle, movieHeader, textStyle} = styles;
+    const {imageStyle, containerStyle} = styles;
 
     return (
         <View style={containerStyle}>
 
             <Image style={imageStyle}
-                   source={{uri: `https://image.tmdb.org/t/p/w500${backdrop_path}`}}
+                   source={{uri: `${IMAGE_BASE_URL}${backdrop_path}`}}
             />
 
-            <View style={movieHeader}>
-                <Text style={textStyle}>
-                    Mad MAX: FURY ROAD
-                </Text>
-            </View>
+            <MovieNameView name={original_title}/>
 
         </View>
     );
@@ -32,22 +30,6 @@ const styles = {
     containerStyle: {
         marginBottom: 15,
         flex: 1
-    },
-    movieHeader: {
-        position: 'absolute',
-        flex: 1,
-        width: null,
-        alignSelf: 'center',
-        marginTop: 40,
-        justifyContent: 'center',
-        paddingLeft: 10,
-        paddingRight: 10,
-        height: 50,
-        borderWidth:2,
-        borderColor:'white'
-    },
-    textStyle: {
-        color: 'white'
     }
 };
 
