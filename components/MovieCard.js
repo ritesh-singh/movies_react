@@ -2,6 +2,8 @@ import React from 'react';
 import {Image, Text, View} from "react-native";
 import MovieNameView from "./MovieNameView";
 import {IMAGE_BASE_URL} from "../utils/Constants";
+import MovieSpecifications from "./MovieSpecifications";
+import ReadMoreView from "./ReadMoreView";
 
 const MovieCard = ({movie}) => {
     const {backdrop_path, original_title} = movie;
@@ -16,6 +18,9 @@ const MovieCard = ({movie}) => {
             />
 
             <MovieNameView name={original_title}/>
+
+            <MovieSpecifications movie={movie}/>
+
 
         </View>
     );

@@ -23,9 +23,9 @@ const styles = {
         marginTop: 40,
         justifyContent: 'center',
         alignItems:'center',
-        paddingLeft: 10,
-        paddingRight: 10,
-        height: 50,
+        paddingLeft: 8,
+        paddingRight: 8,
+        height: 40,
         borderWidth: 2,
         borderColor: 'white'
     },
