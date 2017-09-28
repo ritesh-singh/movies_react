@@ -4,12 +4,18 @@ import {Text, View} from "react-native";
 const styles = {
     containerStyle: {
         height:40,
-        backgroundColor: 'blue',
-        justifyContent:'center'
+        justifyContent:'center',
+        elevation:4
     },
     textStyle: {
         color:'white',
-        alignSelf:'center'
+        backgroundColor: 'blue',
+        alignSelf:'center',
+        paddingTop:10,
+        paddingBottom:10,
+        paddingRight:40,
+        paddingLeft:40,
+        borderRadius:20
     }
 };
 

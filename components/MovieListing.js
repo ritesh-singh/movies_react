@@ -12,7 +12,7 @@ class MovieListing extends Component {
         this.createDataSource(this.state.movies);
     }
 
-    createDataSource(movies){
+    createDataSource(movies) {
         const ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
@@ -37,9 +37,8 @@ class MovieListing extends Component {
 
     render() {
         return (
-
             <ListView
-                style={{marginLeft:10,marginRight:10,marginTop:20}}
+                style={{paddingTop:8,marginLeft:8,marginRight:8}}
                 enableEmptySections
                 dataSource={this.dataSource}
                 renderRow={this.renderRow}
@@ -47,7 +46,7 @@ class MovieListing extends Component {
         );
     }
 
-    renderRow(movie){
+    renderRow(movie) {
         return <MovieCard key={movie.id} movie={movie}/>
     }
 }

@@ -5,7 +5,7 @@ import MovieListing from "./MovieListing";
 
 const App = () => {
     return (
-        <View>
+        <View style={{flex:1}}>
             <Header/>
             <MovieListing/>
         </View>

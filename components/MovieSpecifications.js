@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View} from "react-native";
-import ReadMoreView from "./ReadMoreView";
 
 const styles = {
     containerStyle: {
@@ -12,7 +11,7 @@ const styles = {
         borderRadius: 5,
         padding: 20,
         marginTop: -30,
-        elevation: 3
+        elevation:3
     },
     textContainerStyle: {
         alignItems: 'center'
@@ -34,7 +33,6 @@ const MovieSpecifications = ({movie}) => {
     const {original_language, popularity, vote_average} = movie;
 
     return (
-
         <View style={containerStyle}>
 
             <View style={textContainerStyle}>
@@ -69,7 +67,6 @@ const MovieSpecifications = ({movie}) => {
                 </Text>
             </View>
         </View>
-
     );
 };
 
