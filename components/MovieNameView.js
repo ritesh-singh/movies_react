@@ -26,11 +26,12 @@ const styles = {
         paddingLeft: 8,
         paddingRight: 8,
         height: 40,
-        borderWidth: 2,
+        borderWidth: 3,
         borderColor: 'white'
     },
     textStyle: {
-        color: 'white'
+        color: 'white',
+        fontWeight: 'bold'
     }
 }
 

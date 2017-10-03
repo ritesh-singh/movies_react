@@ -9,7 +9,7 @@ const styles = {
     },
     textStyle: {
         color:'white',
-        backgroundColor: 'blue',
+        backgroundColor: '#0076FF',
         alignSelf:'center',
         paddingTop:10,
         paddingBottom:10,
