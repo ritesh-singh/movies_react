@@ -35,7 +35,8 @@ export default class MovieNameView extends Component {
         } else {
             return (
                 <View style={{backgroundColor: 'black', justifyContent: 'center'}}>
-                    <Text style={{color: 'white', padding: 20, fontWeight: 'bold'}}>
+                    <Text style={{color: 'white', padding: 20,
+                    fontSize:12,fontFamily:'OpenSans-Bold'}}>
                         MAD MAX: FURY ROAD
                     </Text>
                 </View>

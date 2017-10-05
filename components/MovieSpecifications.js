@@ -7,6 +7,7 @@ import {IMAGE_BASE_URL} from "../utils/Constants";
 
 export default class MovieSpecifications extends Component {
 
+
     constructor(props) {
         super(props);
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);

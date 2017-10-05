@@ -20,8 +20,8 @@ const styles = {
     },
     textStyle:{
         color:'#ffffff',
-        fontSize:15,
-        fontFamily:'roboto',
+        fontSize:12,
+        fontFamily:'Roboto-Light',
         marginLeft:8
     }
 };
