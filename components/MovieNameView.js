@@ -1,28 +1,68 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text, View} from "react-native";
 
-const MovieNameView = ({name}) => {
+export default class MovieNameView extends Component {
 
-    const {containerStyle, textStyle} = styles;
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: this.props.name,
+            isReadMore: this.props.isReadMore
+        }
+        console.log(this.props.isReadMore);
+    }
 
-    return (
-        <View style={containerStyle}>
-            <Text style={textStyle}>
-                {name}
-            </Text>
-        </View>
-    );
+    componentWillReceiveProps(nextProps) {
+        console.log(this.props.isReadMore);
+        this.setState({
+            name: nextProps.name,
+            isReadMore: nextProps.isReadMore
+        });
+    }
+
+    getView() {
+
+        const {containerStyle, textStyle} = styles;
+
+        if (this.state.isReadMore) {
+            return (
+                <View style={containerStyle}>
+                    <Text style={textStyle}>
+                        {this.state.name}
+                    </Text>
+                </View>
+            );
+        } else {
+            return (
+                <View style={{backgroundColor: 'black', justifyContent: 'center'}}>
+                    <Text style={{color: 'white', padding: 20, fontWeight: 'bold'}}>
+                        MAD MAX: FURY ROAD
+                    </Text>
+                </View>
+            );
+        }
+
+    }
+
+    render() {
+        return (
+            <View style={{
+                position: this.state.isReadMore ? 'absolute' : 'relative',
+                alignSelf: this.state.isReadMore ? 'center' : null,
+                marginTop: this.state.isReadMore ? 20 : null
+            }}>
+                {this.getView()}
+            </View>
+        );
+    }
 };
 
 const styles = {
     containerStyle: {
-        position: 'absolute',
-        minWidth:150,
-        flex:1,
+        minWidth: 150,
         alignSelf: 'center',
-        marginTop: 40,
         justifyContent: 'center',
-        alignItems:'center',
+        alignItems: 'center',
         paddingLeft: 8,
         paddingRight: 8,
         height: 40,
@@ -32,7 +72,10 @@ const styles = {
     textStyle: {
         color: 'white',
         fontWeight: 'bold'
+    },
+    mainContainerStyle: {
+        position: 'absolute',
+        alignSelf: 'center',
+        marginTop: 20
     }
 }
-
-export default MovieNameView;

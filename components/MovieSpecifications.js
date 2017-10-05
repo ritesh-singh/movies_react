@@ -1,73 +1,101 @@
-import React from 'react';
-import {Text, View} from "react-native";
+import React, {Component} from 'react';
+import {View, UIManager, LayoutAnimation, Image} from "react-native";
+import MovieSpecWithReadMore from "./MovieSpecWithReadMore";
+import MovieSpecWithReadLess from "./MovieSpecWithReadLess";
+import MovieNameView from "./MovieNameView";
+import {IMAGE_BASE_URL} from "../utils/Constants";
+
+export default class MovieSpecifications extends Component {
+
+    constructor(props) {
+        super(props);
+        UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+
+    componentWillMount() {
+        this.state = {
+            isReadMoreVisible: true
+        }
+        this.movie = this.props.movie;
+    }
+
+
+    updateState() {
+        var customLayoutLinear = {
+            duration: 1000,
+            create: {
+                duration: 200,
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.opacity,
+            },
+            update: {
+                duration: 200,
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.scaleXY
+            },
+        };
+
+        LayoutAnimation.configureNext(customLayoutLinear);
+
+        this.setState({
+            isReadMoreVisible: !this.state.isReadMoreVisible
+        });
+    }
+
+    getView() {
+
+        const {backdrop_path, original_title} = this.movie;
+
+        if(this.state.isReadMoreVisible){
+            return (
+                <View>
+
+                    <Image style={styles.imageStyle}
+                           source={{uri: `${IMAGE_BASE_URL}${backdrop_path}`}}
+                    />
+
+                    <MovieNameView isReadMore = {this.state.isReadMoreVisible}
+                    name={original_title}/>
+
+                    <MovieSpecWithReadMore onPress={() => this.updateState()}/>
+
+                </View>
+            );
+        }else if(!this.state.isReadMoreVisible){
+            return (
+                <View>
+
+                    <Image style={styles.imageStyle}
+                           source={{uri: `${IMAGE_BASE_URL}${backdrop_path}`}}
+                    />
+
+                    <MovieNameView isReadMore = {this.state.isReadMoreVisible}
+                                   name={original_title}/>
+
+                    <MovieSpecWithReadLess onPress={() => this.updateState()}/>
+
+                </View>
+            );
+        }else{
+            return null;
+        }
+    }
+
+    render() {
+        return (
+            <View>
+                {this.getView()}
+            </View>
+        );
+    }
+
+
+};
 
 const styles = {
-    containerStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-        marginLeft: 10,
-        marginRight: 10,
-        borderRadius: 5,
-        padding: 20,
-        marginTop: -30,
-        elevation:3
+    imageStyle: {
+        height: 200,
+        flex: 1,
+        width: null
     },
-    textContainerStyle: {
-        alignItems: 'center'
-    },
-    text1Style: {},
-    text2Style: {
-        paddingTop: 5,
-        fontWeight: 'bold',
-        color: 'black'
-    }
-};
-
-const MovieSpecifications = ({movie}) => {
-    const {
-        containerStyle, textContainerStyle,
-        text1Style, text2Style
-    } = styles;
-
-    const {original_language, popularity, vote_average} = movie;
-
-    return (
-        <View style={containerStyle}>
-
-            <View style={textContainerStyle}>
-                <Text style={text1Style}>
-                    LANGUAGE
-                </Text>
-
-                <Text style={text2Style}>
-                    {original_language}
-                </Text>
-            </View>
-
-
-            <View style={textContainerStyle}>
-                <Text style={text1Style}>
-                    RATING
-                </Text>
-
-                <Text style={text2Style}>
-                    {popularity}
-                </Text>
-            </View>
-
-
-            <View style={textContainerStyle}>
-                <Text style={text1Style}>
-                    POPULARITY
-                </Text>
-
-                <Text style={text2Style}>
-                    {vote_average}
-                </Text>
-            </View>
-        </View>
-    );
-};
-
-export default MovieSpecifications;
+}
