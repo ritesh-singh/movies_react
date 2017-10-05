@@ -45,7 +45,7 @@ export default class MovieSpecifications extends Component {
 
     getView() {
 
-        const {backdrop_path, original_title} = this.movie;
+        const {backdrop_path, original_title,overview,original_language,vote_average,popularity} = this.movie;
 
         if(this.state.isReadMoreVisible){
             return (
@@ -58,7 +58,9 @@ export default class MovieSpecifications extends Component {
                     <MovieNameView isReadMore = {this.state.isReadMoreVisible}
                     name={original_title}/>
 
-                    <MovieSpecWithReadMore onPress={() => this.updateState()}/>
+                    <MovieSpecWithReadMore onPress={() => this.updateState()}
+                        movie={{original_language,vote_average,popularity}}
+                    />
 
                 </View>
             );
@@ -73,7 +75,9 @@ export default class MovieSpecifications extends Component {
                     <MovieNameView isReadMore = {this.state.isReadMoreVisible}
                                    name={original_title}/>
 
-                    <MovieSpecWithReadLess onPress={() => this.updateState()}/>
+                    <MovieSpecWithReadLess onPress={() => this.updateState()}
+                        overView={overview}
+                    />
 
                 </View>
             );

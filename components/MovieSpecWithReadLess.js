@@ -1,7 +1,20 @@
 import React from 'react'
 import {Text, TouchableWithoutFeedback, View} from "react-native";
 
+const styles = {
+    titleStyle:{
+        fontFamily:'Roboto-Light',
+        fontSize:12
+    },
+    titleValueStyle:{
+        fontFamily:'Roboto-Bold',
+        fontSize:12
+    }
+};
+
 const MovieSpecWithReadLess = (props) => {
+    const {titleStyle,titleValueStyle} = styles;
+
     return (
         <View>
             <View style={{
@@ -14,33 +27,31 @@ const MovieSpecWithReadLess = (props) => {
             }}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style={{alignItems: 'center'}}>
-                        <Text>LANGUAGE</Text>
-                        <Text>EN</Text>
+                        <Text style={titleStyle}>LANGUAGE</Text>
+                        <Text style={titleValueStyle}>EN</Text>
                     </View>
 
-                    <View style={{width: 2, backgroundColor: 'black', marginTop: 4, marginBottom: 4}}/>
+                    <View style={{width: 1, backgroundColor: '#939393', marginTop: 4, marginBottom: 4}}/>
 
                     <View style={{alignItems: 'center'}}>
-                        <Text>RATING</Text>
-                        <Text>4.7</Text>
+                        <Text style={titleStyle}>RATING</Text>
+                        <Text style={titleValueStyle}>4.7</Text>
                     </View>
 
-                    <View style={{width: 2, backgroundColor: 'black', marginTop: 4, marginBottom: 4}}/>
+                    <View style={{width: 1, backgroundColor: '#939393', marginTop: 4, marginBottom: 4}}/>
 
                     <View style={{alignItems: 'center'}}>
-                        <Text>POPULARITY</Text>
-                        <Text>60</Text>
+                        <Text style={titleStyle}>POPULARITY</Text>
+                        <Text style={titleValueStyle}>60</Text>
                     </View>
                 </View>
 
-                <Text style={{alignSelf: 'center', marginTop: 10}}>
+                <Text style={{alignSelf: 'center', marginTop: 10,marginBottom:10,fontSize:12,fontFamily:'Roboto-Bold'}}>
                     OVERVIEW
                 </Text>
 
-                <Text style={{paddingBottom: 10}}>
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    Lorem Ipsum Lorem Ipsum
+                <Text style={{paddingBottom: 10,fontSize:11,fontFamily:'Roboto-Light'}}>
+                    {props.overView}
                 </Text>
             </View>
 
@@ -60,7 +71,9 @@ const MovieSpecWithReadLess = (props) => {
                             paddingBottom: 10,
                             paddingRight: 40,
                             paddingLeft: 40,
-                            borderRadius: 20
+                            borderRadius: 20,
+                            fontSize:14,
+                            fontFamily:'Roboto-Bold'
                         }}>
                             READ LESS
                         </Text>

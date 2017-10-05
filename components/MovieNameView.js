@@ -36,8 +36,8 @@ export default class MovieNameView extends Component {
             return (
                 <View style={{backgroundColor: 'black', justifyContent: 'center'}}>
                     <Text style={{color: 'white', padding: 20,
-                    fontSize:12,fontFamily:'OpenSans-Bold'}}>
-                        MAD MAX: FURY ROAD
+                    fontSize:12,fontFamily:'Roboto-Bold'}}>
+                        {this.state.name}
                     </Text>
                 </View>
             );
@@ -72,7 +72,8 @@ const styles = {
     },
     textStyle: {
         color: 'white',
-        fontWeight: 'bold'
+        fontSize:12,
+        fontFamily:'Roboto-Bold'
     },
     mainContainerStyle: {
         position: 'absolute',

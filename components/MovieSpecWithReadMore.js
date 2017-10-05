@@ -17,11 +17,14 @@ const styles = {
     textContainerStyle: {
         alignItems: 'center'
     },
-    text1Style: {},
+    text1Style: {
+        fontFamily:'Roboto-Light',
+        fontSize:14
+    },
     text2Style: {
         paddingTop: 5,
-        fontWeight: 'bold',
-        color: 'black'
+        fontFamily:'Roboto-Bold',
+        fontSize:14
     },
     containerStyle2: {
         height: 40,
@@ -36,14 +39,20 @@ const styles = {
         paddingBottom: 10,
         paddingRight: 40,
         paddingLeft: 40,
-        borderRadius: 20
+        borderRadius: 20,
+        fontSize:14,
+        fontFamily:'Roboto-Bold'
     }
 };
 
 export default class MovieSpecWithReadMore extends Component {
 
+
     render() {
         const {containerStyle, textContainerStyle, text1Style, text2Style} = styles;
+
+        const {original_language,vote_average,popularity} = this.props.movie;
+
         return (
             <View>
 
@@ -55,7 +64,7 @@ export default class MovieSpecWithReadMore extends Component {
                         </Text>
 
                         <Text style={text2Style}>
-                            EN
+                            {original_language.toUpperCase()}
                         </Text>
                     </View>
 
@@ -66,7 +75,7 @@ export default class MovieSpecWithReadMore extends Component {
                         </Text>
 
                         <Text style={text2Style}>
-                            fgdfs
+                            {vote_average}
                         </Text>
                     </View>
 
@@ -77,7 +86,7 @@ export default class MovieSpecWithReadMore extends Component {
                         </Text>
 
                         <Text style={text2Style}>
-                            1.2
+                            {popularity.toFixed(1)}
                         </Text>
                     </View>
                 </View>
